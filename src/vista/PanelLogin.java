@@ -25,7 +25,7 @@ public class PanelLogin extends JPanel {
 	private JButton buttonAccesoAlumno;
 	public PanelLogin() {
 		setLayout(null);
-		
+		setBounds(0,0,700,700);
 		JPasswordField passwordField = new JPasswordField();
 		passwordField.setBounds(275, 398, 210, 30);
 		add(passwordField);

@@ -31,13 +31,15 @@ public class VistaPrincipal extends JFrame{
 	private JMenuItem mntConsultaAl;
 	private JMenuBar menuBar;
 	private JMenuItem mntmAadirAl;
+	private JMenuItem mntmEliminar;
 	
 	public VistaPrincipal() {
 		inicializar();
 	}
 	
 	private void inicializar() {
-		getContentPane().setLayout(null);		
+		getContentPane().setLayout(null);	
+		setBounds(0,0,700,700);
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(0, 0, 700, 700);
 		getContentPane().add(scrollPane);
@@ -71,17 +73,32 @@ public class VistaPrincipal extends JFrame{
 		mntmAadirAl.setFont(new Font("Segoe UI", Font.BOLD, 14));
 		mntmAadirAl.setBackground(new Color(0, 153, 255));
 		mnMenuAlumnos.add(mntmAadirAl);
+		
+		mntmEliminar = new JMenuItem("Eliminar");
+		mntmEliminar.setForeground(Color.WHITE);
+		mntmEliminar.setFont(new Font("Segoe UI", Font.BOLD, 15));
+		mntmEliminar.setBorder(null);
+		mntmEliminar.setBackground(new Color(0, 153, 255));
+		mnMenuAlumnos.add(mntmEliminar);
 	}
 	
 	public void permisosProfesor(boolean permitir) {
 		
 		if(permitir) {
 			mntmAadirAl.setEnabled(true);
+			mntmEliminar.setEnabled(true);
 		}
 		else {
 			mntmAadirAl.setEnabled(false);
+			mntmEliminar.setEnabled(false);
 		}
 		
+	}
+	
+	public void setControlador(ControladorApp c) {		//Deberemos presentarle todos los botones al controlador
+		mntConsultaAl.addActionListener(c);
+		mntmAadirAl.addActionListener(c);
+		mntmEliminar.addActionListener(c);
 	}
 	
 	public JMenuItem getMntConsultaAl() {
@@ -90,6 +107,11 @@ public class VistaPrincipal extends JFrame{
 
 	public JMenuItem getMntmAadirAl() {
 		return mntmAadirAl;
+	}
+	
+	
+	public JMenuItem getMntmEliminar() {
+		return mntmEliminar;
 	}
 
 	public void setPanel(JPanel panel) {			
@@ -103,7 +125,6 @@ public class VistaPrincipal extends JFrame{
 	
 	public void hacerVisible() {
 		this.setVisible(true);
-		this.setSize(670, 670);
 		setLocationRelativeTo(null);
 		menuBar.setVisible(false);
 

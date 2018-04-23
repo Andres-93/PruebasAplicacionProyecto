@@ -3,16 +3,19 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
+import vista.EliminarAlumno;
 import vista.PanelLogin;
 import vista.PanelPrincipal;
 import vista.VistaPrincipal;
+import vista.añadirAlumnos;
 
 public class ControladorApp implements ActionListener{
 
 	private VistaPrincipal vistaP;
 	private PanelPrincipal panel1;
 	private PanelLogin panel2;
+	private añadirAlumnos panel3;
+	private EliminarAlumno panel4;
 	
 	public ControladorApp(VistaPrincipal vistaP) {
 		this.vistaP = vistaP;
@@ -24,6 +27,14 @@ public class ControladorApp implements ActionListener{
 
 	public void setPanel2(PanelLogin panel2) {
 		this.panel2 = panel2;
+	}
+	
+	public void setPanel3(añadirAlumnos panel3) {
+		this.panel3 = panel3;
+	}
+	
+	public void setPanel4(EliminarAlumno panel4) {
+		this.panel4 = panel4;
 	}
 
 
@@ -40,6 +51,12 @@ public class ControladorApp implements ActionListener{
 		}else if(e.getSource().equals(panel1.getBtnNewButton())) {
 			vistaP.setPanel(panel2);
 			vistaP.hacerMenuVisible(false);
+		}else if(e.getSource().equals(vistaP.getMntmAadirAl())) {
+			vistaP.setPanel(panel3);
+		}else if(e.getSource().equals(panel3.getBtnCancelar()) || e.getSource().equals(panel4.getBtnCancelar())) {
+			vistaP.setPanel(panel1);			
+		}else if(e.getSource().equals(vistaP.getMntmEliminar())) {
+			vistaP.setPanel(panel4);
 		}
 		
 	}

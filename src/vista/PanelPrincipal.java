@@ -17,7 +17,7 @@ public class PanelPrincipal extends JPanel {
 
 	public PanelPrincipal() {
 		setLayout(null);
-	
+		setBounds(0,0,700,700);
 		JLabel lblAplicacion = new JLabel("APLICACION");
 		lblAplicacion.setForeground(Color.WHITE);
 		lblAplicacion.setFont(new Font("Trebuchet MS", Font.BOLD, 32));
@@ -31,7 +31,7 @@ public class PanelPrincipal extends JPanel {
 		
 		lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(PanelPrincipal.class.getResource("/images/fondo2.jpg")));
-		lblNewLabel.setBounds(0, 0, 700, 700);
+		lblNewLabel.setBounds(0, 0, 700, 625);
 		add(lblNewLabel);
 
 	}

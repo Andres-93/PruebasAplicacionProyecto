@@ -1,4 +1,4 @@
-package VistasPruebas;
+package vista;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
@@ -8,6 +8,9 @@ import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.border.MatteBorder;
+
+import controlador.ControladorApp;
+
 import javax.swing.JButton;
 import java.awt.Cursor;
 
@@ -15,9 +18,10 @@ public class añadirAlumnos extends JPanel {
 	private JTextField textNombreAl;
 	private JTextField textExpAl;
 	private JTextField textApellidoAl;
+	private JButton btnCancelar;
 	public añadirAlumnos() {
 		setLayout(null);
-		
+		setBounds(0,0,700,700);
 		textNombreAl = new JTextField();
 		textNombreAl.setBounds(348, 234, 245, 36);
 		add(textNombreAl);
@@ -33,16 +37,16 @@ public class añadirAlumnos extends JPanel {
 		textExpAl.setBounds(348, 326, 245, 36);
 		add(textExpAl);
 		
-		JButton button = new JButton("");
-		button.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		button.setRolloverIcon(new ImageIcon(añadirAlumnos.class.getResource("/images/PulsadoBotonCancelar.png")));
-		button.setIcon(new ImageIcon(añadirAlumnos.class.getResource("/images/BotonCancelar.png")));
-		button.setFocusPainted(false);
-		button.setContentAreaFilled(false);
-		button.setBorderPainted(false);
-		button.setBorder(null);
-		button.setBounds(435, 505, 188, 55);
-		add(button);
+		btnCancelar = new JButton("");
+		btnCancelar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnCancelar.setRolloverIcon(new ImageIcon(añadirAlumnos.class.getResource("/images/PulsadoBotonCancelar.png")));
+		btnCancelar.setIcon(new ImageIcon(añadirAlumnos.class.getResource("/images/BotonCancelar.png")));
+		btnCancelar.setFocusPainted(false);
+		btnCancelar.setContentAreaFilled(false);
+		btnCancelar.setBorderPainted(false);
+		btnCancelar.setBorder(null);
+		btnCancelar.setBounds(435, 505, 188, 55);
+		add(btnCancelar);
 		
 		JButton btnNewButton = new JButton("");
 		btnNewButton.setRolloverIcon(new ImageIcon(añadirAlumnos.class.getResource("/images/PulsadoBotonA\u00F1adir.png")));
@@ -86,12 +90,23 @@ public class añadirAlumnos extends JPanel {
 		
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon(añadirAlumnos.class.getResource("/images/LogoMirmidonBajo.png")));
-		lblNewLabel_1.setBounds(0, 600, 100, 100);
+		lblNewLabel_1.setBounds(0, 525, 100, 100);
 		add(lblNewLabel_1);
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(añadirAlumnos.class.getResource("/images/FondoAlumnos700X700.png")));
-		lblNewLabel.setBounds(0, 29, 700, 700);
+		lblNewLabel.setBounds(0, 0, 700, 625);				//El ancho hacia abajo debe ser 625 ya que el menu empuja todo 75 pixeles hacia abajo.
 		add(lblNewLabel);
+		
 	}
+	
+	public void setControlador(ControladorApp c) {		//Deberemos presentarle todos los botones al controlador
+		btnCancelar.addActionListener(c);										//aqui iran los botones de añadir y cancelar.
+	}
+
+	public JButton getBtnCancelar() {
+		return btnCancelar;
+	}
+	
+	
 }
