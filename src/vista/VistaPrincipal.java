@@ -24,6 +24,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import javax.swing.border.LineBorder;
 import java.awt.Insets;
+import javax.swing.JSeparator;
 
 public class VistaPrincipal extends JFrame{
 	private JScrollPane scrollPane;
@@ -32,6 +33,16 @@ public class VistaPrincipal extends JFrame{
 	private JMenuBar menuBar;
 	private JMenuItem mntmAadirAl;
 	private JMenuItem mntmEliminar;
+	private JMenu mnCiclos;
+	private JSeparator separator;
+	private JMenu mnProyectos;
+	private JSeparator separator_1;
+	private JMenuItem mntConsultaPro;
+	private JMenuItem mntAadirPro;
+	private JMenuItem mntEliminarPro;
+	private JMenuItem mntConsultarCi;
+	private JMenuItem mntAadirCi;
+	private JMenuItem mntEliminarCi;
 	
 	public VistaPrincipal() {
 		inicializar();
@@ -56,7 +67,7 @@ public class VistaPrincipal extends JFrame{
 		mnMenuAlumnos = new JMenu("Alumnos");
 		mnMenuAlumnos.setBackground(new Color(0, 0, 204));
 		mnMenuAlumnos.setForeground(Color.WHITE);
-		mnMenuAlumnos.setFont(new Font("Segoe UI Semibold", Font.BOLD, 22));
+		mnMenuAlumnos.setFont(new Font("Segoe UI", Font.BOLD, 22));
 		menuBar.add(mnMenuAlumnos);
 		
 		mntConsultaAl = new JMenuItem("Consulta");
@@ -80,6 +91,61 @@ public class VistaPrincipal extends JFrame{
 		mntmEliminar.setBorder(null);
 		mntmEliminar.setBackground(new Color(0, 153, 255));
 		mnMenuAlumnos.add(mntmEliminar);
+		
+		separator = new JSeparator();
+		separator.setBorder(null);
+		menuBar.add(separator);
+		
+		mnProyectos = new JMenu("Proyectos");
+		mnProyectos.setFont(new Font("Segoe UI", Font.BOLD, 22));
+		mnProyectos.setForeground(Color.WHITE);
+		mnProyectos.setBackground(new Color(0, 0, 204));
+		menuBar.add(mnProyectos);
+		
+		mntConsultaPro = new JMenuItem("Consultar");
+		mntConsultaPro.setForeground(Color.WHITE);
+		mntConsultaPro.setFont(new Font("Segoe UI", Font.BOLD, 14));
+		mntConsultaPro.setBackground(new Color(0, 153, 255));
+		mnProyectos.add(mntConsultaPro);
+		
+		mntAadirPro = new JMenuItem("A\u00F1adir");
+		mntAadirPro.setFont(new Font("Segoe UI", Font.BOLD, 14));
+		mntAadirPro.setForeground(Color.WHITE);
+		mntAadirPro.setBackground(new Color(0, 153, 255));
+		mnProyectos.add(mntAadirPro);
+		
+		mntEliminarPro = new JMenuItem("Eliminar");
+		mntEliminarPro.setForeground(Color.WHITE);
+		mntEliminarPro.setFont(new Font("Segoe UI", Font.BOLD, 14));
+		mntEliminarPro.setBackground(new Color(0, 153, 255));
+		mnProyectos.add(mntEliminarPro);
+		
+		separator_1 = new JSeparator();
+		menuBar.add(separator_1);
+		
+		mnCiclos = new JMenu("Ciclos");
+		mnCiclos.setBackground(new Color(0, 0, 204));
+		mnCiclos.setForeground(Color.WHITE);
+		mnCiclos.setFont(new Font("Segoe UI", Font.BOLD, 22));
+		menuBar.add(mnCiclos);
+		
+		mntConsultarCi = new JMenuItem("Consultar");
+		mntConsultarCi.setBackground(new Color(0, 153, 255));
+		mntConsultarCi.setForeground(Color.WHITE);
+		mntConsultarCi.setFont(new Font("Segoe UI", Font.BOLD, 14));
+		mnCiclos.add(mntConsultarCi);
+		
+		mntAadirCi = new JMenuItem("A\u00F1adir");
+		mntAadirCi.setBackground(new Color(0, 153, 255));
+		mntAadirCi.setForeground(Color.WHITE);
+		mntAadirCi.setFont(new Font("Segoe UI", Font.BOLD, 14));
+		mnCiclos.add(mntAadirCi);
+		
+		mntEliminarCi = new JMenuItem("Eliminar");
+		mntEliminarCi.setBackground(new Color(0, 153, 255));
+		mntEliminarCi.setForeground(Color.WHITE);
+		mntEliminarCi.setFont(new Font("Segoe UI", Font.BOLD, 14));
+		mnCiclos.add(mntEliminarCi);
 	}
 	
 	public void permisosProfesor(boolean permitir) {
@@ -87,10 +153,18 @@ public class VistaPrincipal extends JFrame{
 		if(permitir) {
 			mntmAadirAl.setEnabled(true);
 			mntmEliminar.setEnabled(true);
+			mntAadirPro.setEnabled(true);
+			mntEliminarPro.setEnabled(true);
+			mntAadirCi.setEnabled(true);
+			mntEliminarCi.setEnabled(true);
 		}
 		else {
 			mntmAadirAl.setEnabled(false);
 			mntmEliminar.setEnabled(false);
+			mntAadirPro.setEnabled(false);
+			mntEliminarPro.setEnabled(false);
+			mntAadirCi.setEnabled(false);
+			mntEliminarCi.setEnabled(false);
 		}
 		
 	}
@@ -99,8 +173,40 @@ public class VistaPrincipal extends JFrame{
 		mntConsultaAl.addActionListener(c);
 		mntmAadirAl.addActionListener(c);
 		mntmEliminar.addActionListener(c);
+		mntConsultaPro.addActionListener(c);
+		mntAadirPro.addActionListener(c);
+		mntEliminarPro.addActionListener(c);
+		mntConsultarCi.addActionListener(c);
+		mntAadirCi.addActionListener(c);
+		mntEliminarCi.addActionListener(c);
 	}
 	
+	
+	
+	public JMenuItem getMntConsultarCi() {
+		return mntConsultarCi;
+	}
+
+	public JMenuItem getMntAadirCi() {
+		return mntAadirCi;
+	}
+
+	public JMenuItem getMntEliminarCi() {
+		return mntEliminarCi;
+	}
+
+	public JMenuItem getMntConsultaPro() {
+		return mntConsultaPro;
+	}
+
+	public JMenuItem getMntAadirPro() {
+		return mntAadirPro;
+	}
+
+	public JMenuItem getMntEliminarPro() {
+		return mntEliminarPro;
+	}
+
 	public JMenuItem getMntConsultaAl() {
 		return mntConsultaAl;
 	}
