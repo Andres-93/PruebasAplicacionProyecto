@@ -15,6 +15,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
 
 import controlador.ControladorApp;
 import java.awt.Cursor;
@@ -24,6 +25,17 @@ public class PanelLogin extends JPanel {
 	private JLabel label;
 	private JButton buttonAccesoAlumno;
 	public PanelLogin() {
+		inicializar();
+	}
+
+	private void inicializar() {
+		
+		try {
+			UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
 		setLayout(null);
 		setBounds(0,0,700,700);
 		JPasswordField passwordField = new JPasswordField();

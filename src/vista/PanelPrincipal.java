@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
 
 import controlador.ControladorApp;
 
@@ -16,6 +17,17 @@ public class PanelPrincipal extends JPanel {
 	private JLabel lblNewLabel;
 
 	public PanelPrincipal() {
+		inicializar();
+
+	}
+
+	private void inicializar() {
+		
+		try {
+			UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 		setLayout(null);
 		setBounds(0,0,700,700);
 		JLabel lblAplicacion = new JLabel("APLICACION");
@@ -33,7 +45,6 @@ public class PanelPrincipal extends JPanel {
 		lblNewLabel.setIcon(new ImageIcon(PanelPrincipal.class.getResource("/images/fondo2.jpg")));
 		lblNewLabel.setBounds(0, 0, 700, 625);
 		add(lblNewLabel);
-
 	}
 
 	public void setControlador(ControladorApp c) {		//Deberemos presentarle todos los botones al controlador

@@ -6,6 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
 
 import controlador.ControladorApp;
 
@@ -49,6 +50,13 @@ public class VistaPrincipal extends JFrame{
 	}
 	
 	private void inicializar() {
+		
+		try {
+			UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
 		getContentPane().setLayout(null);	
 		setBounds(0,0,700,700);
 		scrollPane = new JScrollPane();

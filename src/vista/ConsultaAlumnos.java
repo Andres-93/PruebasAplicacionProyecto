@@ -10,6 +10,7 @@ import controlador.ControladorApp;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
 import javax.swing.JComboBox;
@@ -26,6 +27,13 @@ public class ConsultaAlumnos extends JPanel {
 		inicializar();
 	}
 	private void inicializar() {
+		
+		try {
+			UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
 		setLayout(null);
 		
 		JLabel lblConsultarAlumnos = new JLabel("CONSULTAR ALUMNOS");

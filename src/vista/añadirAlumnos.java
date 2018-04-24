@@ -4,6 +4,8 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JTextField;
@@ -20,6 +22,18 @@ public class añadirAlumnos extends JPanel {
 	private JTextField textApellidoAl;
 	private JButton btnCancelar;
 	public añadirAlumnos() {
+		inicializar();
+		
+	}
+
+	private void inicializar() {
+		
+		try {
+			UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
 		setLayout(null);
 		setBounds(0,0,700,700);
 		textNombreAl = new JTextField();
@@ -97,7 +111,6 @@ public class añadirAlumnos extends JPanel {
 		lblNewLabel.setIcon(new ImageIcon(añadirAlumnos.class.getResource("/images/FondoAlumnos700X700.png")));
 		lblNewLabel.setBounds(0, 0, 700, 625);				//El ancho hacia abajo debe ser 625 ya que el menu empuja todo 75 pixeles hacia abajo.
 		add(lblNewLabel);
-		
 	}
 	
 	public void setControlador(ControladorApp c) {		//Deberemos presentarle todos los botones al controlador

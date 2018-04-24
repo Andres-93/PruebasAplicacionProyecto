@@ -10,6 +10,7 @@ import controlador.ControladorApp;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
 import javax.swing.JButton;
@@ -20,6 +21,17 @@ public class EliminarAlumno extends JPanel {
 	private JButton btnCancelar;
 	private JList list;
 	public EliminarAlumno() {
+		inicializar();
+	}
+
+	private void inicializar() {
+		
+		try {
+			UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
 		setLayout(null);
 		
 		JLabel lblListaAlumnos = new JLabel("LISTA ALUMNOS:");
