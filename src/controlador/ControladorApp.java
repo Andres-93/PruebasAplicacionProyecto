@@ -58,9 +58,13 @@ public class ControladorApp implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {					//De momento hacen lo mismo uya que esto esta en ALFA
 		if(e.getSource().equals(panel2.getBtnBoton())) {			//Si entramos como profesores tendremos los permisos
-			vistaP.setPanel(panel1);
-			vistaP.hacerMenuVisible(true);
-			vistaP.permisosProfesor(true);
+			if(con.buscarUsuario(panel2.getDatos())) {
+				vistaP.setPanel(panel1);
+				vistaP.hacerMenuVisible(true);
+				vistaP.permisosProfesor(true);
+			}else {
+				JOptionPane.showConfirmDialog(null, "Usuario o contraseña no validos, vuelva a intentarlo","Error al logearse", JOptionPane.CLOSED_OPTION);
+			}
 		}else if(e.getSource().equals(panel2.getButtonAccesoAlumno())) {				
 			int respuesta = JOptionPane.showConfirmDialog(panel2, "Si entra con una cuenta de Alumno unicamente podra realizar consultas. Desea Continuar?","Confirmacion",JOptionPane.YES_NO_OPTION);
 			if(respuesta == JOptionPane.YES_OPTION) {

@@ -18,12 +18,16 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 
 import controlador.ControladorApp;
+import modelo.Profesor;
+
 import java.awt.Cursor;
 
 public class PanelLogin extends JPanel {
 	private JButton btnBoton;
 	private JLabel label;
 	private JButton buttonAccesoAlumno;
+	private JTextField textFieldUsuario;
+	private JPasswordField passwordField;
 	public PanelLogin() {
 		inicializar();
 	}
@@ -38,7 +42,7 @@ public class PanelLogin extends JPanel {
 		
 		setLayout(null);
 		setBounds(0,0,700,700);
-		JPasswordField passwordField = new JPasswordField();
+		passwordField = new JPasswordField();
 		passwordField.setBounds(275, 398, 210, 30);
 		add(passwordField);
 		
@@ -56,7 +60,7 @@ public class PanelLogin extends JPanel {
 		buttonAccesoAlumno.setBounds(384, 462, 185, 51);
 		add(buttonAccesoAlumno);
 		
-		JTextField textFieldUsuario = new JTextField();
+		textFieldUsuario = new JTextField();
 		textFieldUsuario.setBounds(275, 343, 210, 30);
 		add(textFieldUsuario);
 		textFieldUsuario.setColumns(10);
@@ -114,4 +118,15 @@ public class PanelLogin extends JPanel {
 	public JButton getButtonAccesoAlumno() {
 		return buttonAccesoAlumno;
 	}
+	
+	public Profesor getDatos() {
+		
+		Profesor profe;
+		
+		profe = new Profesor(textFieldUsuario.getText(), passwordField.getText());			//He usado otro diferente al getText en la pass porque ponia que estaba ya deprecated el getText normal.
+		
+		return profe;
+		
+	}
+	
 }

@@ -3,6 +3,7 @@ package ejecutable;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
@@ -23,7 +24,6 @@ public class Conexion {
 		         System.out.println("Conectado");
 		     }
 		}catch(SQLException | ClassNotFoundException e) {
-			System.out.println("ERROR");
 			JOptionPane.showMessageDialog(null, e.getMessage());
 		}				
 	}
@@ -45,13 +45,32 @@ public class Conexion {
             st.setString(1, profe.getUsuario());
             st.setString(2, profe.getPass());
             st.execute();
+            JOptionPane.showConfirmDialog(null, "Usuario guardado correctamente", "Mensaje de confirmación", JOptionPane.CLOSED_OPTION);
         } catch (SQLException ex) {
            JOptionPane.showMessageDialog(null, "Usuario ya existente");
-        }
+        }		
+	}
+	
+	public boolean buscarUsuario(Profesor profe) {
 		
-		
-		
-		
+		boolean encontrado = false;
+		try {
+			PreparedStatement st = conexion.prepareStatement("SELECT * FROM profesores where usuario = ? AND contraseña = ?");
+			st.setString(1, profe.getUsuario());
+			st.setString(2, profe.getPass());
+								//Si queremos guardar todas las columnas en una especie de coleccion haremos ResultSet rs = st.executeQuery();
+			
+			ResultSet rs = st.executeQuery();
+			
+			while(rs.next()) {
+				if(rs.getString("usuario").equals(profe.getUsuario()) && rs.getString("contraseña").equals(profe.getPass())){
+					encontrado = true;
+				}
+			}			
+		}catch(SQLException e) {
+			JOptionPane.showConfirmDialog(null, e.getMessage(), "Error al logearse", JOptionPane.CANCEL_OPTION);
+		}		
+		return encontrado;
 	}
 	
 }

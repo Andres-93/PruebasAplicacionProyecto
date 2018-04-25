@@ -29,6 +29,7 @@ public class MainEjecutable {
 				ControladorApp control = new ControladorApp(prueba,con);
 				
 				con.conectar();							//Abrimos la comunicacion con la base de datos
+														//FALTA CERRAR LA BASE AL SALIR
 				
 				control.setPanel1(panel1);
 				control.setPanel2(panel2);
