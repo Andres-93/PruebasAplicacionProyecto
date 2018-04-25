@@ -5,10 +5,12 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
+import ejecutable.Conexion;
 import vista.ConsultaAlumnos;
 import vista.EliminarAlumno;
 import vista.PanelLogin;
 import vista.PanelPrincipal;
+import vista.RegistrarProfesor;
 import vista.VistaPrincipal;
 import vista.añadirAlumnos;
 
@@ -20,9 +22,12 @@ public class ControladorApp implements ActionListener{
 	private añadirAlumnos panel3;
 	private EliminarAlumno panel4;
 	private ConsultaAlumnos panel5;
+	private RegistrarProfesor panel6;
+	private Conexion con;				//Nose muy bien si esto sera asi
 	
-	public ControladorApp(VistaPrincipal vistaP) {
+	public ControladorApp(VistaPrincipal vistaP, Conexion con) {
 		this.vistaP = vistaP;
+		this.con = con;
 	}
 
 	public void setPanel1(PanelPrincipal panel1) {
@@ -43,6 +48,10 @@ public class ControladorApp implements ActionListener{
 	
 	public void setPanel5(ConsultaAlumnos panel5) {
 		this.panel5 = panel5;
+	}
+	
+	public void setPanel6(RegistrarProfesor panel6) {
+		this.panel6 = panel6;
 	}
 
 
@@ -70,6 +79,10 @@ public class ControladorApp implements ActionListener{
 			vistaP.setPanel(panel4);
 		}else if(e.getSource().equals(vistaP.getMntConsultaAl())) {
 			vistaP.setPanel(panel5);
+		}else if(e.getSource().equals(vistaP.getMntRegistrarProfesor())) {
+			panel6.hacerVisible();
+		}else if(e.getSource().equals(panel6.getBtnRegistrar())) {
+			con.añadirProfesor(panel6.getDatos());															//Falta el registrar profesor de la clase conexion			
 		}
 		
 	}

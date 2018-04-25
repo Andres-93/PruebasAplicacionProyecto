@@ -44,6 +44,9 @@ public class VistaPrincipal extends JFrame{
 	private JMenuItem mntConsultarCi;
 	private JMenuItem mntAadirCi;
 	private JMenuItem mntEliminarCi;
+	private JSeparator separator_2;
+	private JMenu mnMenuRegistrar;
+	private JMenuItem mntRegistrarProfesor;
 	
 	public VistaPrincipal() {
 		inicializar();
@@ -154,6 +157,21 @@ public class VistaPrincipal extends JFrame{
 		mntEliminarCi.setForeground(Color.WHITE);
 		mntEliminarCi.setFont(new Font("Segoe UI", Font.BOLD, 14));
 		mnCiclos.add(mntEliminarCi);
+		
+		separator_2 = new JSeparator();
+		menuBar.add(separator_2);
+		
+		mnMenuRegistrar = new JMenu("Registrar");
+		mnMenuRegistrar.setBackground(new Color(0, 0, 204));
+		mnMenuRegistrar.setForeground(Color.WHITE);
+		mnMenuRegistrar.setFont(new Font("Segoe UI", Font.BOLD, 22));
+		menuBar.add(mnMenuRegistrar);
+		
+		mntRegistrarProfesor = new JMenuItem("Registrar Profesor");
+		mntRegistrarProfesor.setBackground(new Color(0, 153, 255));
+		mntRegistrarProfesor.setForeground(Color.WHITE);
+		mntRegistrarProfesor.setFont(new Font("Segoe UI", Font.BOLD, 14));
+		mnMenuRegistrar.add(mntRegistrarProfesor);
 	}
 	
 	public void permisosProfesor(boolean permitir) {
@@ -165,6 +183,7 @@ public class VistaPrincipal extends JFrame{
 			mntEliminarPro.setEnabled(true);
 			mntAadirCi.setEnabled(true);
 			mntEliminarCi.setEnabled(true);
+			mntRegistrarProfesor.setEnabled(true);
 		}
 		else {
 			mntmAadirAl.setEnabled(false);
@@ -173,6 +192,7 @@ public class VistaPrincipal extends JFrame{
 			mntEliminarPro.setEnabled(false);
 			mntAadirCi.setEnabled(false);
 			mntEliminarCi.setEnabled(false);
+			mntRegistrarProfesor.setEnabled(false);
 		}
 		
 	}
@@ -187,10 +207,15 @@ public class VistaPrincipal extends JFrame{
 		mntConsultarCi.addActionListener(c);
 		mntAadirCi.addActionListener(c);
 		mntEliminarCi.addActionListener(c);
+		mntRegistrarProfesor.addActionListener(c);
 	}
 	
 	
 	
+	public JMenuItem getMntRegistrarProfesor() {
+		return mntRegistrarProfesor;
+	}
+
 	public JMenuItem getMntConsultarCi() {
 		return mntConsultarCi;
 	}
