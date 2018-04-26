@@ -29,7 +29,7 @@ public class MainEjecutable {
 				ControladorApp control = new ControladorApp(prueba,con);
 				
 														//Abrimos la comunicacion con la base de datos
-														//FALTA CERRAR LA BASE AL SALIR
+														//FALTA CERRAR LA BASE AL SALIRaa
 				
 				control.setPanel1(panel1);
 				control.setPanel2(panel2);
