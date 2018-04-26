@@ -12,7 +12,7 @@ import modelo.Profesor;
 
 public class Conexion {
 
-	String ruta = "C:\\Users\\PcCom\\Desktop\\sqlite\\SQLiteDatabaseBrowserPortable\\Data\\Prueba.db";
+	String ruta = "C:\\Users\\21718908.ALUMNOS\\Desktop\\Prueba.db";
 	Connection conexion;
 	
 	
